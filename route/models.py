@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import User
+from driver.models import Car
 
 # Create your models here.
 class Routes(models.Model):
@@ -13,6 +13,6 @@ class AddRoutes(models.Model):
     date = models.DateField()
     time = models.TimeField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    driver = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True)
-    carNumber = models.CharField(max_length=3, unique=True)
+    car = models.ForeignKey(
+        Car, on_delete=models.CASCADE, null=True, blank=True)
+    

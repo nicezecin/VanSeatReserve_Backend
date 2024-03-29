@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import  Routes, AddRoutes
-from user.models import User
-from user.serializer import UserSerializer
+from driver.models import Car
+from driver.serializer import CarSerializer
 
 class RoutesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,13 +18,13 @@ class AddRoutesSerializer(serializers.ModelSerializer):
         queryset=Routes.objects.all(),
         required=True      
     )
-    driver = serializers.PrimaryKeyRelatedField(
-        queryset=User.objects.all(),
+    car = serializers.PrimaryKeyRelatedField(
+        queryset=Car.objects.all(),
         required=True      
     )
     startRoute_id = RoutesSerializer(source='startRoute', read_only=True)
     endRoute_id = RoutesSerializer(source='endRoute', read_only=True)
-    driver_id = UserSerializer(source='driver', read_only=True)
+    car_id = CarSerializer(source='car', read_only=True)
     
     class Meta:
         model = AddRoutes
