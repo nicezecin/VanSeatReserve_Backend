@@ -67,8 +67,9 @@ INSTALLED_APPS = [
     "corsheaders",
     "user",
     "route",
-    "driver",
-    "customer"
+    "car",
+    "customer",
+    "driver"
 ]
 
 MIDDLEWARE = [

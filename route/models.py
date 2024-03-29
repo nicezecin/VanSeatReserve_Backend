@@ -1,5 +1,5 @@
 from django.db import models
-from driver.models import Car
+from car.models import Car
 
 # Create your models here.
 class Routes(models.Model):

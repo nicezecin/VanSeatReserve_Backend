@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import  Routes, AddRoutes
-from driver.models import Car
-from driver.serializer import CarSerializer
+from car.models import Car
+from car.serializer import CarSerializer
 
 class RoutesSerializer(serializers.ModelSerializer):
     class Meta:
