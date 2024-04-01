@@ -1,6 +1,7 @@
 from django.db import models
 from car.models import Car
 
+
 STATUS = [("available", "ว่าง"), ("unavailable", "ไม่ว่าง")]
 # Create your models here.
 class Routes(models.Model):
