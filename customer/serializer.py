@@ -4,6 +4,10 @@ from user.models import User
 from user.serializer import UserSerializer
 from route.models import AddRoutes
 from route.serializer import AddRoutesSerializer
+from car.models import Car
+from car.serializer import CarSerializer
+from car.models import Seat
+from car.serializer import SeatSerializer
 
 class TicketSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
@@ -16,8 +20,22 @@ class TicketSerializer(serializers.ModelSerializer):
         required=True 
     )
     
+    car = serializers.PrimaryKeyRelatedField(
+        queryset=Car.objects.all(),
+        required=True 
+    )
+    
+    seat = serializers.PrimaryKeyRelatedField(
+        queryset=Seat.objects.all(),
+        required=True 
+    )
+    
+    
     user_id = UserSerializer(source='user', read_only=True)
     add_route_id = AddRoutesSerializer(source='add_route', read_only=True)
+    car_id = CarSerializer(source='car', read_only=True) 
+    seat_id = SeatSerializer(source='seat', read_only=True) 
+
     
     
     class Meta:
