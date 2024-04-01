@@ -1,6 +1,7 @@
 from django.db import models
 from user.models import User
 
+
 # Create your models here.
 STATUS = [("unavailable", "ไม่ว่าง"), ("available", "ว่าง")]
 class Car(models.Model):
@@ -13,4 +14,7 @@ class Seat(models.Model):
     car = models.ForeignKey(
         Car, on_delete=models.CASCADE, null=True, blank=True)
     no = models.CharField(max_length=3, default="")
-    status = models.CharField(max_length=20, choices=STATUS, default="unavailable")
+    status = models.CharField(max_length=20, choices=STATUS, default="available")
+
+   
+    

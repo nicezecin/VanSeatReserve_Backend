@@ -29,7 +29,25 @@ class AddRoutesViewSet(viewsets.ModelViewSet):
 
 
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = AddRoutes.objects.all()
+        startRoute_id = self.request.query_params.get("startRoute_id")
+        endRoute_id = self.request.query_params.get("endRoute_id")
+        date = self.request.query_params.get("date")
+
+        if startRoute_id:
+            queryset = queryset.filter(startRoute_id=startRoute_id)
+        if endRoute_id:
+            queryset = queryset.filter(endRoute_id=endRoute_id)
+        if date:
+            queryset = queryset.filter(date__icontains=date)
+            
+        return queryset
+        
+        
+        
+        
+        
+        '''queryset = super().get_queryset()
         startRoute_id = self.request.query_params.get("startRoute_id")
         endRoute_id = self.request.query_params.get("endRoute_id")
         date = self.request.query_params.get("date")
@@ -42,4 +60,4 @@ class AddRoutesViewSet(viewsets.ModelViewSet):
         if date:
             queryset = queryset.filter(date__icontains=date)
             
-        return queryset
+        return queryset'''

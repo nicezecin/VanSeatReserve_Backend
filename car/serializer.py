@@ -3,6 +3,7 @@ from .models import Car, Seat
 from user.models import User
 from user.serializer import UserSerializer
 
+
 class CarSerializer(serializers.ModelSerializer):
     driver = serializers.PrimaryKeyRelatedField(
         queryset=User.objects.all(),
@@ -24,8 +25,9 @@ class SeatSerializer(serializers.ModelSerializer):
         
     )
     
-    car_id = CarSerializer(source='car', read_only=True)
     
+    car_id = CarSerializer(source='car', read_only=True)
+
     
     class Meta:
         model = Seat
