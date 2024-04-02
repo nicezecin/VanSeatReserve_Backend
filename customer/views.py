@@ -24,17 +24,17 @@ class TicketViewSet(viewsets.ModelViewSet):
         status = self.request.query_params.get("status")
         
         if user_id:
-            queryset = queryset.filter(driver_id=user_id)        
+            queryset = queryset.filter(user_id=user_id)        
         if add_route_id:
-            queryset = queryset.filter(startRoute_id=add_route_id)
+            queryset = queryset.filter(add_route_id=add_route_id)
         if car_id:
-            queryset = queryset.filter(endRoute_id=car_id)
+            queryset = queryset.filter(car_id=car_id)
         if seat_id:
-            queryset = queryset.filter(endRoute_id=seat_id)
+            queryset = queryset.filter(seat_id=seat_id)
         if img:
             queryset = queryset.filter(img__icontains=img)
         if status:
-            queryset = queryset.filter(img__icontains=status)
+            queryset = queryset.filter(status__icontains=status)
             
             
         return queryset
