@@ -24,18 +24,3 @@ class UserViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(lastName__icontains=lastName)
             
         return queryset
-    
-    def get_queryset(self):
-        queryset = AddRoutes.objects.all()
-        startRoute_id = self.request.query_params.get("startRoute_id")
-        endRoute_id = self.request.query_params.get("endRoute_id")
-        date = self.request.query_params.get("date")
-
-        if startRoute_id:
-            queryset = queryset.filter(startRoute_id=startRoute_id)
-        if endRoute_id:
-            queryset = queryset.filter(endRoute_id=endRoute_id)
-        if date:
-            queryset = queryset.filter(date__icontains=date)
-            
-        return queryset

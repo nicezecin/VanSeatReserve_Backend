@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import  Routes, AddRoutes
 from car.models import Car
 from car.serializer import CarSerializer
+from user.serializer import UserSerializer
 from user.models import User
 
 class RoutesSerializer(serializers.ModelSerializer):
@@ -27,7 +28,7 @@ class AddRoutesSerializer(serializers.ModelSerializer):
         queryset=Car.objects.all(),
         required=True      
     )
-    driver_id = RoutesSerializer(source='driver', read_only=True)
+    driver_id = UserSerializer(source='driver', read_only=True)
     startRoute_id = RoutesSerializer(source='startRoute', read_only=True)
     endRoute_id = RoutesSerializer(source='endRoute', read_only=True)
     car_id = CarSerializer(source='car', read_only=True)
