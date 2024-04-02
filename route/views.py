@@ -35,6 +35,7 @@ class AddRoutesViewSet(viewsets.ModelViewSet):
         endRoute_id = self.request.query_params.get("endRoute_id")
         date = self.request.query_params.get("date")
         
+        
         if driver_id:
             queryset = queryset.filter(driver_id=driver_id)
             

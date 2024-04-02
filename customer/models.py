@@ -16,9 +16,9 @@ class Ticket(models.Model):
     add_route = models.ForeignKey(
         AddRoutes, on_delete=models.CASCADE, null=True, blank=True)
     car = models.ForeignKey(
-        Car, on_delete=models.CASCADE, null=True, blank=True, related_name='cars')
+        Car, on_delete=models.CASCADE, null=True, blank=True)
     seat = models.ForeignKey(
-        Seat, on_delete=models.CASCADE, null=True, blank=True, related_name='seats')
+        Seat, on_delete=models.CASCADE, null=True, blank=True)
     img = models.ImageField(upload_to='tickets/', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS, default="unpaid")
     #ticket_no =  models.CharField(max_length=20, default="")  
