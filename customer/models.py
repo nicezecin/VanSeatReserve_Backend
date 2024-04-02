@@ -1,7 +1,7 @@
 from django.db import models
 from user.models import User
 from route.models import AddRoutes
-from car.models import Car
+from car.models import Car, Seat
 
 import uuid
 #import random
@@ -17,8 +17,8 @@ class Ticket(models.Model):
         AddRoutes, on_delete=models.CASCADE, null=True, blank=True)
     car = models.ForeignKey(
         Car, on_delete=models.CASCADE, null=True, blank=True, related_name='cars')
-    '''seat = models.ForeignKey(
-        Seat, on_delete=models.CASCADE, null=True, blank=True, related_name='tickets')'''
+    seat = models.ForeignKey(
+        Seat, on_delete=models.CASCADE, null=True, blank=True, related_name='tickets')
     img = models.ImageField(upload_to='tickets/', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS, default="unpaid")
     #ticket_no =  models.CharField(max_length=20, default="")  

@@ -25,16 +25,16 @@ class TicketSerializer(serializers.ModelSerializer):
         required=True 
     )
     
-    '''seat = serializers.PrimaryKeyRelatedField(
+    seat = serializers.PrimaryKeyRelatedField(
         queryset=Seat.objects.all(),
         required=True 
-    )'''
+    )
     
     
     user_id = UserSerializer(source='user', read_only=True)
     add_route_id = AddRoutesSerializer(source='add_route', read_only=True)
     car_id = CarSerializer(source='car', read_only=True) 
-    #seat_id = SeatSerializer(source='seat', read_only=True) 
+    seat_id = SeatSerializer(source='seat', read_only=True) 
 
     
     
