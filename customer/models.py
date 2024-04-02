@@ -18,8 +18,8 @@ class Ticket(models.Model):
     car = models.ForeignKey(
         Car, on_delete=models.CASCADE, null=True, blank=True, related_name='cars')
     '''seat = models.ForeignKey(
-        Seat, on_delete=models.CASCADE, null=True, blank=True, related_name='tickets')
-    img = models.ImageField(upload_to='tickets/', null=True, blank=True)''' 
+        Seat, on_delete=models.CASCADE, null=True, blank=True, related_name='tickets')'''
+    img = models.ImageField(upload_to='tickets/', null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS, default="unpaid")
     #ticket_no =  models.CharField(max_length=20, default="")  
     
