@@ -12,3 +12,26 @@ class TicketViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+    def get_queryset(self):
+        queryset = Ticket.objects.all()
+        user_id = self.request.query_params.get("user_id")
+        add_route_id = self.request.query_params.get("add_route_id")
+        car_id = self.request.query_params.get("car_id")
+        img = self.request.query_params.get("img")
+        status = self.request.query_params.get("status")
+        
+        if user_id:
+            queryset = queryset.filter(driver_id=user_id)        
+        if add_route_id:
+            queryset = queryset.filter(startRoute_id=add_route_id)
+        if car_id:
+            queryset = queryset.filter(endRoute_id=car_id)
+        if img:
+            queryset = queryset.filter(img__icontains=img)
+        if status:
+            queryset = queryset.filter(img__icontains=status)
+            
+            
+        return queryset
