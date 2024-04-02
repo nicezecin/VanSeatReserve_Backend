@@ -30,10 +30,14 @@ class AddRoutesViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = AddRoutes.objects.all()
+        driver_id = self.request.query_params.get("driver_id")
         startRoute_id = self.request.query_params.get("startRoute_id")
         endRoute_id = self.request.query_params.get("endRoute_id")
         date = self.request.query_params.get("date")
-
+        
+        if driver_id:
+            queryset = queryset.filter(driver_id=driver_id)
+            
         if startRoute_id:
             queryset = queryset.filter(startRoute_id=startRoute_id)
         if endRoute_id:

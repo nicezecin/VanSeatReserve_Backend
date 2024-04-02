@@ -1,5 +1,6 @@
 from django.db import models
 from car.models import Car
+from user.models import User
 
 
 STATUS = [("available", "ว่าง"), ("unavailable", "ไม่ว่าง")]
@@ -19,3 +20,5 @@ class AddRoutes(models.Model):
         Car, on_delete=models.CASCADE, null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATUS, default="available")
     max_seat = models.CharField(max_length=13, blank=True)
+    driver = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True)
