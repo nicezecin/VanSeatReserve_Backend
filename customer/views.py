@@ -4,6 +4,11 @@ from .serializer import TicketSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+
 class TicketViewSet(viewsets.ModelViewSet):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
@@ -35,3 +40,12 @@ class TicketViewSet(viewsets.ModelViewSet):
             
             
         return queryset
+    
+# upload file img    
+@csrf_exempt
+def upload_file(request):
+    if request.method == 'POST' and request.FILES['file']:
+        uploaded_file = request.FILES['file']
+        file_name = default_storage.save(uploaded_file.name, ContentFile(uploaded_file.read()))
+        return JsonResponse({'message': 'File uploaded successfully'})
+    return JsonResponse({'error': 'No file uploaded'}, status=400)
