@@ -13,11 +13,11 @@ class RoutesSerializer(serializers.ModelSerializer):
          
 class AddRoutesSerializer(serializers.ModelSerializer):
     driver = serializers.PrimaryKeyRelatedField(
-        queryset=Routes.objects.all(),
+        queryset=User.objects.all(),
         required=True 
     )
     startRoute = serializers.PrimaryKeyRelatedField(
-        queryset=User.objects.all(),
+        queryset=Routes.objects.all(),
         required=True 
     )
     endRoute = serializers.PrimaryKeyRelatedField(

@@ -15,8 +15,6 @@ class Ticket(models.Model):
         User, on_delete=models.CASCADE, null=True, blank=True)
     add_route = models.ForeignKey(
         AddRoutes, on_delete=models.CASCADE, null=True, blank=True)
-    car = models.ForeignKey(
-        Car, on_delete=models.CASCADE, null=True, blank=True)
     seat = models.ForeignKey(
         Seat, on_delete=models.CASCADE, null=True, blank=True)
     img = models.ImageField(upload_to='tickets/', null=True, blank=True)

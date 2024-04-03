@@ -13,6 +13,4 @@ class Seat(models.Model):
         Car, on_delete=models.CASCADE, null=True, blank=True)
     no = models.CharField(max_length=3, default="")
     status = models.CharField(max_length=20, choices=STATUS, default="available")
-
-   
     
