@@ -4,6 +4,8 @@ from .serializer import TicketSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
+
+
 class TicketViewSet(viewsets.ModelViewSet):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
