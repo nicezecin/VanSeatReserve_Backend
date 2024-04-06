@@ -23,6 +23,7 @@ class TicketViewSet(viewsets.ModelViewSet):
         seat_id = self.request.query_params.get("seat_id")
         img = self.request.query_params.get("img")
         status = self.request.query_params.get("status")
+        id = self.request.query_params.get("id")
         
         if user_id:
             queryset = queryset.filter(user_id=user_id)        
@@ -34,7 +35,9 @@ class TicketViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(img__icontains=img)
         if status:
             queryset = queryset.filter(status__icontains=status)
-            
+        if id:
+            queryset = queryset.filter(id=id)
+          
             
         return queryset
     
