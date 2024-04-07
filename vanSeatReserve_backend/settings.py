@@ -69,7 +69,8 @@ INSTALLED_APPS = [
     "route",
     "car",
     "customer",
-    "driver"
+    "driver",
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -166,5 +167,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-

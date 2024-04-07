@@ -12,17 +12,17 @@ from car.serializer import SeatSerializer
 class TicketSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
         queryset=User.objects.all(),
-        required=True 
+        required=False 
     )
     
     add_route = serializers.PrimaryKeyRelatedField(
         queryset=AddRoutes.objects.all(),
-        required=True 
+        required=False 
     )
     
     seat = serializers.PrimaryKeyRelatedField(
         queryset=Seat.objects.all(),
-        required=True 
+        required=False 
     )
     
     

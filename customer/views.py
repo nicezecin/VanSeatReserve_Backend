@@ -3,6 +3,9 @@ from .models import Ticket
 from .serializer import TicketSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics
+from .filters import TicketFilter
 
 
 
@@ -41,3 +44,17 @@ class TicketViewSet(viewsets.ModelViewSet):
             
         return queryset
     
+        # Method to update seat status by ID using PUT request
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+    
+    
+class TicketView(generics.ListAPIView):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = TicketFilter
