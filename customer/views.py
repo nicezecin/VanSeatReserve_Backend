@@ -27,6 +27,10 @@ class TicketViewSet(viewsets.ModelViewSet):
         img = self.request.query_params.get("img")
         status = self.request.query_params.get("status")
         id = self.request.query_params.get("id")
+        statusApprove = self.request.query_params.get("statusApprove")
+        payDate = self.request.query_params.get("payDate")
+        payTime = self.request.query_params.get("payTime")
+        payPrice = self.request.query_params.get("payPrice")
         
         if user_id:
             queryset = queryset.filter(user_id=user_id)        
@@ -37,9 +41,20 @@ class TicketViewSet(viewsets.ModelViewSet):
         if img:
             queryset = queryset.filter(img__icontains=img)
         if status:
-            queryset = queryset.filter(status__icontains=status)
+            queryset = queryset.filter(status__exact=status)
         if id:
             queryset = queryset.filter(id=id)
+        if statusApprove:
+            queryset = queryset.filter(statusApprove__exact=statusApprove)
+        if payDate:
+            queryset = queryset.filter(payDate__icontains=payDate)
+        if payTime:
+            queryset = queryset.filter(payTime__icontains=payTime)
+        if payPrice:
+            queryset = queryset.filter(payPrice__icontains=payPrice)
+        
+        
+            
           
             
         return queryset
