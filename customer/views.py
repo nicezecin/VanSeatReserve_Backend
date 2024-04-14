@@ -7,8 +7,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from .filters import TicketFilter
 
-
-
 class TicketViewSet(viewsets.ModelViewSet):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
@@ -52,9 +50,7 @@ class TicketViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(payTime__icontains=payTime)
         if payPrice:
             queryset = queryset.filter(payPrice__icontains=payPrice)
-        
-        
-            
+         
           
             
         return queryset

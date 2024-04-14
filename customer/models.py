@@ -3,7 +3,6 @@ from user.models import User
 from route.models import AddRoutes
 from car.models import Seat
 
-import uuid
 
 # import random
 # import string
@@ -41,22 +40,4 @@ class Ticket(models.Model):
         )
     statusApprove = models.CharField(max_length=20, choices=STATUSAPPROVE, default="pending")
 
-    """def __str__(self):
-        return self.ticket_no
     
-    def save(self, *args, **kwargs):
-        if not self.ticket_no:
-            # Generate ticket number using UUID
-            self.ticket_no = str(uuid.uuid4()).replace("-", "")[:20]  
-        super().save(*args, **kwargs)
-
-     def save(self, *args, **kwargs):
-        if not self.ticket_no:
-            self.ticket_no = self.generate_ticket_no()
-        super().save(*args, **kwargs)
-
-    def generate_number_ticket_no(self):
-        ticket_no = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
-        while Ticket.objects.filter(ticket_no=ticket_no).exists():
-            ticket_no = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
-        return ticket_no"""
